@@ -1,0 +1,16 @@
+#在命令栏输入echo callt逐行运行
+
+set txte = translate 你好世界; #翻译
+
+#构造命令
+new func hello_l(get=[]){
+print(txte)
+print('hello world')
+return txte
+}end
+
+#运行
+set get_say= hello 啊吧,啊吧,啊吧2r4556dfhgfdghdfghsdsfn胡乱打
+#读
+say eng get_say
+

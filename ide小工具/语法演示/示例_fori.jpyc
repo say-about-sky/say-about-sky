@@ -1,0 +1,5 @@
+"""示例:如何使用fori"""
+#在命令栏输入[迭代器命令如echo] callt ;或call Text运行
+set a= byte 10
+fori a print end > --a;echo ok
+

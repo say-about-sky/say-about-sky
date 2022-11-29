@@ -1,0 +1,20 @@
+#echo callt
+new def sss(txt,t){
+tt='\n'
+txt=txt.split(tt)
+print()
+for i in txt:
+    time.sleep(t)
+    diy('print '+i)
+    print(diy("translate -r "+i))
+    diy('fori 3 '+'time.sleep(t);'+'say eng '+i)
+}end
+#创建一个命令组
+new cmd saytxt(get,t){
+import time
+set txt=Text
+set t=int t
+sss(txt,t)
+}end
+
+

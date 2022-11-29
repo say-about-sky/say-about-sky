@@ -1,0 +1,15 @@
+'''echo callt '''
+#_l声明函数是一个命令 get为必要的形参用于接收自动传入的参数
+new func 命令_l(get=[]){
+def 内部函数(*get):
+    name,*v=get
+    print('命令名:'+name,'\n传入的参数:',v)
+    return 0
+return 内部函数(*get)
+}end #end 用来结束多行捕获
+
+#运行测试:
+命令
+命令 123
+命令 123 233
+

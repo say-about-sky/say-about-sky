@@ -1,0 +1,17 @@
+#echo callt
+new def str_sub_unm(string){
+import re
+newstring = re.sub(r'[0-9]+[)]', '', string)
+return newstring
+}end
+
+new cmd say_txt(get,t){
+import time
+set txt=Text
+set txt=str_sub_unm(txt)
+set t=int t
+sss(txt,t)
+}end
+
+
+
