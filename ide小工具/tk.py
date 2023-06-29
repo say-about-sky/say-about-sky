@@ -1,10 +1,14 @@
 #-*- coding:utf-8 -*-
 
 #from progress.bar import Bar
-import USE,os,psutil
+import USE,os,sys,psutil
 
+if 'linux' in sys.platform:
+    USE.pip_install=f"python{sys.version_info.major}.{sys.version_info.minor} -m pip install "+"{mod}"
+    
+USE.pip_dict={}
 import_pub_tuple=({'np': 'numpy'},
-                  'engapi', 'M_t', '扫图', '截屏', '腾讯识图', 'clk', '保存全局变量', 'tkinter', 'os', 'sys', 'json', 'jsonlines', 'javalang',
+                  'engapi', 'M_t', '扫图', '截屏', '腾讯识图', 'clk', '保存全局变量', 'tkinter', 'json', 'jsonlines', 'javalang',
                   'requests', 'pickle', 'ctypes', 'windnd', 'multiprocessing', 'compileall', 'dir_exp', 'newts', '类', 'openAI','call_CB','tab_list',
                   'get_doc',
                   ('tkinter', 'tk'),
