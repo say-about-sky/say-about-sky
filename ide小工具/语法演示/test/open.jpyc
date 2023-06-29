@@ -1,0 +1,6 @@
+i='C:\\Users\\Administrator\\Desktop\\宇宙安全声明.jpyc'
+open i
+open (i,)
+open i i
+open (i,i)
+open C:\Users\Administrator\Desktop\宇宙安全声明.jpyc

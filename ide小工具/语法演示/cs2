@@ -1,8 +1,0 @@
-"""echo callt"""
-new echo ok
-new cmd 测试(get,a,b){
-echo get,a,b
-}end 
-
-
-

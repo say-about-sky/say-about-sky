@@ -1,0 +1,16 @@
+set txt='这里是 演示'
+echo txt
+say txt
+echo_and_say 接下来详细说明右键选项卡
+root.root.lin_r()
+#借用原来的右键方法
+fc=root.root.lin_dic['<3>']
+#合成一个新的右键属性
+func=lambda e:root.root.Tr.akn((fc,root.root.diy),[(e),('say 每一个选项都对应着不同的命令。 以后的教程将会交给你如何自定义选项栏')],pool=root.root.pool_Ml)
+#添加新的右键属性并在调用后还原原有的属性
+root.root.lin_dic['<3>']=lambda event:(root.root.diy('say 打开后会弹出选择窗口。'),func(event),root.root.lin_r(),root.root.lin(dic=root.root.lin_dic))
+#加载刷新快捷键
+root.root.lin(dic=root.root.lin_dic)
+echo_and_say 请对着文本框再次单击右键
+
+echo_and_say 右键演示结束

@@ -1,3 +1,8 @@
+#os.path.split分离地址字符串的文件和目录
+#如果为True 则返回自身如果是False则返回None
+#def Bool_Retuen_ro_None(get):
+    #return get if get else None
+
 class Clsr:#储存封闭变量的类
     #装饰器
     def Decorators(*value):
@@ -87,17 +92,20 @@ class Ml(metaclass=Value):
             return (diy(' '.join(get[1:])),)
     #设置当前命名空间(作用域)内的字面量,一般配合get使用 set [变量]=[字面量/变量/命令];[变量]=[字面量/变量/命令]...
     def set_l(self=None,get=[]):
+        global diy
         get=' '.join(get[1:]).split(';')
         ge=tuple((i.split('=') for i in get))
         bt=Byte(0)
-        try:
-            [(exec(f"{i[0]}=diy(i[1])",locals(),Clsr.loc),++bt) for i in ge]
-        except:#下面这句不是抄的就是写着玩
+        #{i[0]}={diy(i[1])}
+        try:#set a= c int 10
+            [(locals().update({'set_key':diy(i[1])}),exec(f"{i[0]} = set_key",dict(**locals(),**globals()),Clsr.loc),++bt) for i in ge]
+        except BaseException as e:#下面这句不是抄的就是写着玩
             print('The parameter was not found in the commands/scope:',ge[int(bt.byte())][-1])
             try:
                 diy(' '.join(get))
             except:
                 [eval(i,Clsr.glo,Clsr.loc) for i in get]
+                print('ok')
     #返回自身的字符串
     def string_l(self=None,get=[]):
         get=' '.join(get[1:]).split(';')
@@ -162,6 +170,29 @@ class Ml(metaclass=Value):
             get=[[diy(f"c {i}") for i in eval(i)] for i in get]
         finally:
             return get
+    #删除包括缓存的所有同名变量 del [变量] [变量] ...
+    def del_l(self=None,get=[]):
+        get=get[1:]
+        def ddf(ge=get,err=True):
+            l=0
+            for i in [f"del Clsr.glo['{ge}']",f"del Clsr.loc['{ge}']",f"del bianl['{ge}']",]:
+                try:
+                    exec(i)
+                except:
+                    l+=1
+            if l==3:
+                if err:
+                    print('无法从作用域检索到该变量: ',ge)
+        if get[0] in newts.stat.keys():
+            get=get[1:]
+            try:
+                [exec(f'del Ml.{ge}_l') if f'{ge}_l' in Ml.__dict__ else None for ge in get]
+                Ds_(Ml);congzai_Ml()
+                flushed_prog(user_keywords=Ds_.ds_key)
+            except:
+                pass
+            return [ddf(ge,err=False) for ge in get ]
+        return [ddf(ge) for ge in get ]
     #可设置结束符的echo print [变量/end='结束字符'(默认是空字符'')]...[变量]
     def print_l(self=None,get=[]):
         end='\n' if not get[1:] else get[2] if get[1] =='end' else ''
@@ -169,16 +200,25 @@ class Ml(metaclass=Value):
         Ml.echo_l(self,get=get,end=end)
     #直接输入目录打开文件 open [目录/网址(如果是网址则返回requests.get对象)] [目录]...
     def open_l(self=None,get=[]):
+        #print('get:',get)
+        get=tuple(map(lambda i:Diy_to_code_or_str(i,local=globals()),get[1:]))
+        #print('get=',get)
         try:
-            return roo_d(get[1:])
+            return [roo_d(i)for i in get]
         except:
-            if len(get[1:])==1:
-                return requests.get(get[1])
-    #设置文件读取方式 open 'rb'[\...]或者open read [int](读取长度) 
+            if len(get)==1:
+                return requests.get(get[0])
+    #设置文件读取方式 open 'rb'[\...]或者open read [int](读取长度) 或 open zhr [bool值](打开覆盖)
     def set_open_l(self=None,get=[]):
         global rsr,reado
         if get[1] in ['read',]:
             reado=int(get[2])
+        elif get[1] in ('zhr',):
+            bools={True:code_color_Dio.l[0],False:code_color_Dio.l[1]}
+            #如果传入的参数有一个bool为False 则结果为False(以后专门写一个判别器可以自定义逻辑门路)all()或any()达到同样效果
+            oro=bools[not bool(tuple(filter(lambda i:not bool(eval(i)),get[2:] if get[2:] else [False])))]()
+            congzai_Ml()
+            return oro
         else:
             diy('file_type None None') if 'b' in get[1] else 'file_type UTF-8 ignore'
             rsr=get[1]
@@ -202,6 +242,45 @@ class Ml(metaclass=Value):
         except:
             pass
         return Ml.encoding,Ml.errors
+    #设置当前窗口分辨率 res [长] [宽]
+    def res_l(self=None,get=[]):
+        """
+        width=[] height=[]
+        [] []
+        """
+        get=get[1:]
+        kl=[~i.find('=') for i in get]
+        if not get:
+            return [(root.winfo_height(),root.winfo_width()),
+            (jp.panecget(jp.panes()[0],'width'),jp.panecget(jp.panes()[0],'height'))]
+        elif len(kl)>kl.count(0) or not get:
+            ad=kl.copy()
+            add =get[kl.index(0)] if kl.count(0) else None
+            jk=lambda key:dic[key] if key in dic else add
+            dic={i.split('=')[0].replace(' ',''):i.split('=')[1].replace(' ','') if i.split('=')[0].replace(' ','') in ('width','height')else add for i in get}
+            width,height=jk('width'),jk('height')
+        elif get[0]=='-r':
+            jp.paneconfig(jp.panes()[0],height=jp.panecget(jp.panes()[0],'height')+(400-root.winfo_height()))
+            jp.paneconfig(jp.panes()[0],width=600)
+            return root.geometry("600x400")
+        else:
+            width,height=get
+        try:#res 400 200
+            width_x=root.winfo_width()-int(width)
+            height_x=int(height)-root.winfo_height()
+            #获取原值
+            Txt=jp.panecget(jp.panes()[0],'width'),jp.panecget(jp.panes()[0],'height')
+            
+            #设置cmd组件高度
+            jp.paneconfig(jp.panes()[1],height=root.winfo_height()-jp.panecget(jp.panes()[0],'height'))
+            #设置嵌套组件的宽度
+            j.paneconfigure(j.panes()[0],width=int(width))
+            #缩放
+            jp.paneconfig(jp.panes()[0],height=Txt[1]+height_x if type(Txt[1])==int else Txt[1])
+            jp.paneconfig(jp.panes()[0],width=int(width))
+            root.geometry(f"{width}x{height}")
+        except():
+            pass
     #循环调用命令
     def __fori(i=0,fun=None):
         fun= fun.replace(';','; ')
@@ -223,9 +302,10 @@ class Ml(metaclass=Value):
     #读取取文本框中所有字符串并返回 Text
     def Text_l(self=None,get=[]):
         try:
-            return text.get(tkinter.SEL_FIRST, tkinter.SEL_LAST)
-        except:
-            return text.get('1.0', tk.END)
+            txt=text.get(tkinter.SEL_FIRST, tkinter.SEL_LAST)
+            return {txt:txt,'':text.get('1.0', tk.END)[:''.rfind('\n')]}[txt]
+        except: 
+            return text.get('1.0', tk.END)[:''.rfind('\n')]
     #翻译传入的变量返回值/字符串并返回 translate [-r(将所有输入转换为字符串)/命令/字符串/.] [命令/字符串/.]
     def translate_l(self=None,get=[]):
         get=get[1:]
@@ -237,14 +317,16 @@ class Ml(metaclass=Value):
         except:
             return ' '.join((text_Translation(i) for i in get))
     
-    def __say_api_ce(get,lang='zh'):
+    def __say_api_ce(get,**k):
         try:
-            return [engapi.txchemp(str(diy(i)),lang) for i in get[1:]]
+            return [engapi.txchemp(str(diy(i)),**k) for i in get[1:]]
         except:
-            return engapi.txchemp(' '.join(get[1:]),lang)
+            return engapi.txchemp(' '.join(get[1:]),**k)
     #字符串转音频并播放 say [eng/.] [变量]
     def say_l(self=None,get=[]):
         get=get[1:]
+        if get[0] in ['help','-help','--help']:
+            return print(engapi.yd_lang)
         if get:
             if get[0]=='eng':
                 try:
@@ -254,9 +336,22 @@ class Ml(metaclass=Value):
             #elif get[0]=='ce':
                 #Ml.__say_api_ce(get)
             elif get[0] in engapi.yd_lang:
-                Ml.__say_api_ce(get,get[0])
+                Ml.__say_api_ce(get,lang=get[0])
             else:
                 Ml.__say_api_ce([':']+get)
+    #截图 screenshots [保存位置(默认传入命令的目录)] [保存位置(输入多个目录连续截屏)] 
+    def screenshots_l(self=None,get=[]):
+        if get[1:]:
+            print([i for i in get[1:]])
+            for i in get[1:]:
+                print(clk.run_x(i))
+        else:
+            print(clk.run_x())
+    #扫图取词并处理结果(暂不支持批量) scan_translation [图片地址.png/jpg] [输出目录(默认是返回)]
+    def scan_screenshots_l(self=None,get=[]):
+        if get[2:]:
+            return 扫图.baiduOCR(get[1],get[2])
+        return 扫图.baiduOCR(get[1])
     #用泡菜操作数据 pickle [dump/load/dumps/loads] [-t/-d/open/变量] [写入的格式[-t:]/写入的地址[-d:]/读取的地址或者空(默认)/变量]
     def pickle_l(self=None,get=[]):
         get=get[1:]
@@ -295,6 +390,15 @@ class Ml(metaclass=Value):
                 return lio
             elif get[0] in dic.keys():
                 return [dic[get[0]](diy(i)) for i in get[1:]]
+    cme_dict={'GUI':lambda _:None,'CMD':lambda _:None,'TK':lambda _:None}
+    #额外开一个交互窗口以某一或某类命令为头命令交互(未完成)
+    def cme_l(self=None,get=[]):
+        get=get[1:]
+        out=None
+        if get:
+            if get[0] in Ml.cme_dict:
+                out=Ml.cme_dict[get[0]](get[1:])
+        return out
     #强制使用python执行 cmd<空格>[要执行的py命令]
     def cmd_l(self=None,get=[]):
         get=get[1:]
@@ -321,7 +425,7 @@ class Ml(metaclass=Value):
             Ml.add_open=pyt
         elif get[0]=='-t':
             compileall.compile_path(get[1])
-        if Ml.add_open.endswith(".py"):
+        if ~os.path.basename(Ml.add_open).find("."):
             compileall.compile_file(Ml.add_open)
         else:
             compileall.compile_dir(Ml.add_open)
@@ -372,9 +476,70 @@ class Ml(metaclass=Value):
         os.chdir(add_open)
         print(os.popen(f'java {classs.name} -encoding UTF-8').read())
         os.chdir(h)
-    #快捷调用字典[一般是模块组成的字典]中的对照,默认给定的字典中的元素是py程序包
+    #将字节码写入到文件 示例 filew -wb txt cs1.txt cs2.txt  ...
+    def filew_l(self=None,get=[]):
+        get=get[1:]
+        txt=get[0]
+        #print(txt,get)
+        s,get,o=(Diy_to_code_or_str(get[1],
+                local=globals()),map(lambda i:Diy_to_code_or_str(i,local=globals()),
+                get[2:]),
+                 get[0].strip('-')) if txt[0]=='-' else (Diy_to_code_or_str(get[0],local=globals()),
+                                                         map(lambda i:Diy_to_code_or_str(i,local=globals()),get[1:]),
+                                                         '')
+        #print(s,get,o)
+        return [Write_To_file_Return(i,s=s,o=o) for i in get]
+    def _filer(ot:(str,list,set),o:str='rb')->str:
+        lis=[]
+        i=ot
+        #print('_filer',o)
+        try:
+            for i in ot:
+                #print(type(i))
+                path=Diy_to_code_or_str((Ml._filer(i,o=o) if Type_in_iter(i) else i),local=globals())
+                #print(path)
+                lis.append(path if Type_in_iter(path) else Read_To_Retuern(path,o=o))
+        except:
+            print(f'path: {i} 不是一个有效目录')
+        return lis
+    #将文件中的字符串返回相应文件的字节码列表 fileb [路径] [路径] ...
+    def filer_l(self=None,get=[]):
+        get=get[1:]
+        o='rb'
+        if get:
+            get,o=(get[1:],get[0].strip('-')) if get[0][0]=='-' else (get,o)
+        #print(get)
+        return Ml._filer(map(lambda i:diy(i),get),o=o)
+            
+    #fileb的载体
+    def loop_file_codec(pat:('path',list,tuple,set,),sin='\n'):
+        #循环解码直到能解出
+        als=Codec_tuple
+        i=0
+        byte=als[i]
+        while 1:
+            try:
+                #print(byte)
+                return Boot_file_path_dir_exp_bool_func(pat,sin,byte=byte)
+            except:
+                i+=1
+                try:
+                    byte=als[i]
+                except:
+                    return print('无法解码目录')
+    #将文件中的字符串编译为命令行命令并返回fileb [路径] [路径] ...
+    def fileb_l(self=None,get=[]):
+        get=get[1:]
+        txt=Ml.loop_file_codec(get,';')
+        #print(txt)
+        return compile(txt,'','single')
+    #快捷以命令行运行外部脚本文件 run [path] [path] ...
     def run_l(self=None,get=[]):
-        pass
+        #print(get)
+        get=map(lambda i:str(Diy_to_code_or_str(i,local=globals())),get[1:])
+        gets=' '.join(get)
+        gtxt=diy(f"""fileb {gets}""")
+        return exec(gtxt)
     #设置线程池的线程数 threads [int]
     def threads_l(self=None,get=[]):
         get=get[1:]
@@ -409,6 +574,49 @@ class Ml(metaclass=Value):
         if rd:
             lb.delete('1.0','end')
         lb.insert(tkinter.END,bp)
+    #ascii编译文本内容
+    def ord_l(self=None,get=[]):
+        get=get[1:]
+        np_type=np.uint8
+        if get:
+            if get[0] in ("-h","-help","-H"):
+                np_dict=np.__dict__
+                np_type_str='\n'.join(filter(lambda i:"dtype" in dir(np_dict[i]),np_dict))
+                print("ord/chr后面可加np类型作为编译对象,常见的np类型:\n",np_type_str)
+                return
+            try:
+                np_type=np.__dict__[get[0]]
+            except:
+                np_type=np.uint8
+        kk_b=text.get('1.0', tk.END).strip().encode()
+        #批量转换为uint8编号 
+        np_on=np.frombuffer(kk_b,dtype=np_type)
+        kk=' '.join(np_on.astype(str))
+        if rd:
+            lb.delete('1.0','end')
+        lb.insert(tkinter.END,kk)
+        return np_on
+    #ascii翻译文本内容
+    def chr_l(self=None,get=[]):
+        np_type=np.uint8
+        if get:
+            if get[0] in ("-h","-help","-H"):
+                np_dict=np.__dict__
+                np_type_str='\n'.join(filter(lambda i:"dtype" in dir(np_dict[i]),np_dict))
+                print("ord/chr后面可加np类型作为编译对象,常见的np类型:\n",np_type_str)
+                return
+            try:
+                np_type=np.__dict__[get[0]]
+            except:
+                np_type=np.uint8
+        sss_list=text.get('1.0', tk.END).strip().split(' ')
+        #这里可以将编码类型dtype=np.uint8改为可选项 
+        np_on=np.array(sss_list,dtype=np_type).tobytes()
+        kk=np_on.decode()
+        if rd:
+            lb.delete('1.0','end')
+        lb.insert(tkinter.END,kk)
+        return np_on
     #二进制翻译文本内容 bin
     def bin_l(self=None,get=[]):
         kk=Lins.encode(text.get('1.0', tk.END).strip())
@@ -436,6 +644,7 @@ class Ml(metaclass=Value):
         if rd:
             lb.delete('1.0','end')
         lb.insert(tkinter.END,kk)
+    #写入ce.json 文件 jsonw [命令/...] [命令] ...
     def jsonw_l(self=None,get=[]):
         get=get[1:]
         lin()
@@ -443,6 +652,7 @@ class Ml(metaclass=Value):
         rs= '..' if not get else askopenfilename(title=u'写入js') if get[0]=='open' else get[0]
         with open(rs+'\ce.json','w',encoding='utf-8') as file:
             file.write(json.dumps(st,indent=2,ensure_ascii=False))
+    #读取ce.json 文件 
     def jsonr_l(self=None,get=[]):
         get=get[1:]
         lin()
@@ -487,9 +697,36 @@ class Ml(metaclass=Value):
     def import_l(self=None,get=[]):
         get=','.join(get[1:])
         exec(f"import {get}",Clsr.glo,Clsr.loc)
+    #快捷获取root上级环境变量 如 use fff 相当于 fff=root.root.fff
+    def use_l(self=None,get=[]):
+        get=get[1:]
+        congzai_Ml()
+        for i in get:
+            try:
+                Clsr.glo[i]=eval(i)
+            except BaseException as e:
+                print(f'获取 {i} 失败:',e)
+    #修改着色器状态codeStatus 可bool对象 可bool对象 ...
+    def codeStatus_l(self=None,get=[]):
+        get=get[1:]
+        if not get:
+            return next(code_color_Dio)()
+        bools={True:code_color_Dio.l[0],False:code_color_Dio.l[1]}
+        #如果传入的参数有一个bool为False 则结果为False(以后专门写一个判别器可以自定义逻辑门路)all()或any()达到同样效果
+        return all(get)#bools[not bool(tuple(filter(lambda i:not bool(eval(i)),get)))]()
+    #修改菜单栏状态codeStatus 可bool对象 可bool对象 ...
+    def menuStatus_l(self=None,get=[]):
+        get=get[1:]
+        if not get:
+            return next(menu_bool_call)()
+        bools={True:menu_bool_call.l[0],False:menu_bool_call.l[1]}
+        #如果传入的参数有一个bool为False 则结果为False(以后专门写一个判别器可以自定义逻辑门路)all()或any()达到同样效果
+        return all(get)#bools[not bool(tuple(filter(lambda i:not bool(eval(i)),get)))]()
     #将文本框[大]中的文本初始化为代码函数并返回 compile -e/-r -t 
     def compile_l(self=None,get=[]):
-        get=get[1:];st=text.get('1.0', tk.END)
+        get=get[1:]
+        stt=text.get(tkinter.SEL_FIRST, tkinter.SEL_LAST)
+        st={stt:stt,'':text.get('1.0', tk.END)}[stt]
         sbp,gea='exec',['']
         sbp='eval' if get.count('-r') else 'exec' if get.count('-e') else sbp
         if get.count('-t'):#设置代码文件名
@@ -497,6 +734,25 @@ class Ml(metaclass=Value):
             gea=get[ind+1:ind+2]
             print(gea)
         return compile(st,gea[0],sbp)
+    #将文本框[大]中的文本(也可以是选中文本)初始化为原始代码compile对象并返回
+    def single_l(self=None,get=[]):
+        get=get[1:]
+        txt=text.get(tkinter.SEL_FIRST, tkinter.SEL_LAST)
+        txt={txt:txt,'':text.get('1.0', tk.END)}[txt]
+        gea=['']
+        if get.count('-t'):#设置代码文件名
+            ind=get.index('-t')
+            gea=get[ind+1:ind+2]
+        return compile(txt.replace('\n',';'),gea[0],'single')
+    #运行选中的代码
+    def callr_l(self=None,get=[]):
+        get=get[1:]
+        txt=diy('Text')
+        #txt=txt if txt else 
+        try:
+            return exec(txt,Clsr.glo,Clsr.loc)
+        except BaseException as e:
+            return f'Err: {e}'
     #直接用py运行文本框[F5]
     def cal_l(self=None,get=[]):
         get=get[1:]
@@ -573,10 +829,12 @@ class Ml(metaclass=Value):
         else:
             txter=1
         tx=diy('Text')
+        #print('调用',tx,type(tx))
         gtta=(tx).split('\n')
         for i in range(len(gtta)):
             try:
                 diy(gtta[i])
+                #yield ''
             except:
                 try:
                     if txter:
@@ -589,47 +847,130 @@ class Ml(metaclass=Value):
     def next_l(self=None,get=[]):
         get=get[1:]
         return [eval(f'next({i})',Clsr.glo,Clsr.loc) for i in get]
+    #删除文本框中的指定文本
+    def delete_l(self=None,get=[]):
+        get=get[1:]
+        print(tkinter.SEL_FIRST, tkinter.SEL_LAST)
+        #[if diy(i)==text.get(tkinter.SEL_FIRST, tkinter.SEL_LAST) for i in get]
+        #text.delete(tkinter.SEL_FIRST, tkinter.SEL_LAST)
+    #创建一种字体并返回 font [参数]:[值] [参数]:[值]... 如 font family:'微软雅黑' size:10
+    def font_l(self=None,get=[]):
+        import tkinter.font
+        get=get[1:]#.split(';')
+        if not get:
+            return tkinter.font.names()
+        ge=(",".join(get)).replace(':','=')
+        se=f"""tkinter.font.Font({ge})"""
+        print(se)
+        return eval(se,dict(Clsr.glo,**globals()),Clsr.loc)
+    #设置默认的root.tag_config的参数 tag_config [位置(默认是选中区域)/-r(重置)] [参数]=[值]...如tag_config foreground='red' font=ft
+    def tag_config_l(self=None,get=[]):
+        get=get[1:]
+        if get:
+            if get[0]=='-r':
+                Ml.tag=''
+                return Ml.tag
+            if '=' not in get[0]:
+                text.tag_add('tag',get[0])
+                get=get[1:]
+            else:
+                text.tag_add('tag',tkinter.INSERT)
+        ge=",".join(get)
+        eval(f"""text.tag_config('tag',{ge})""",dict(Clsr.glo,**globals()),Clsr.loc)
+        Ml.tag='tag'
+        return Ml.tag
     #将变量插入文本框[大],如果不能识别则会直接插入原文 input [变量/-r(不检测变量直接插入所输文字)]<空格>[变量]...注意:如果使用';'前面加空格则是返回数组
     def input_l(self=None,get=[]):
         get,bol=(get[2:],True)if len(get)>1 and get[1]=='-r' else (get,False)
         try:
             if bol:
-                text.insert(tkinter.INSERT,' '.join(get).replace('\\n', '\n'))
+                text.insert(tkinter.INSERT,' '.join(get).replace('\\n', '\n'),Ml.tag)
             else:
-                text.insert(tkinter.INSERT,Ml.call_l(get=get))
+                text.insert(tkinter.INSERT,Ml.call_l(get=get),Ml.tag)
         except:#如果call不行就变为字符串
             get=' '.join([i.replace(';;',';') for i in get[1:]]) if get[-1]!=';' else get[1:-1]
-            text.insert(tkinter.INSERT,get)
+            text.insert(tkinter.INSERT,get,Ml.tag)
+    #向ChatBot发送信息并返回 CB [参数]      
+    def CB_l(self=None,get=[]):
+        try:
+            try:
+                txt=call_CB.run(str(diy(' '.join(get[1:]))),config=call_CB.cook)
+            except NameError:
+                txt=call_CB.run(' '.join(get[1:]),config=call_CB.cook)
+            return txt.strip()
+        except BaseException as e:
+            return print('运行失败:',e)
+    #向openai发送信息并返回 openai [参数]
+    def openai_l(self=None,get=[]):#set tt=openai 正弦交流电的原理是什么
+        try:
+            try:
+                txt=openAI.run_openai(str(diy(' '.join(get[1:]))),Ml.openAi_engine,'正在思考\n','传输完成\n',**Ml.openAi_dict)
+            except NameError:
+                txt=openAI.run_openai(' '.join(get[1:]),Ml.openAi_engine,'正在思考\n','传输完成\n',**Ml.openAi_dict)
+            return txt["choices"][0]["text"].strip()
+        except BaseException as e:
+            return print('运行失败,你可能没有使用engine设置使用型号或其他原因输入不合法:',e)
+    #设置openai的型号/登录/查看 openai [mods/-r] [-r/mods] [-r要添加的参数]
+    def engine_l(self=None,get=[]):
+        mods=["text-ada-001",'text-curie-001','text-babbage-001',
+              'text-davinci-001','text-davinci-002','text-davinci-003',
+              'code-cushman-001','code-davinci-002']
+        if not get[1:]:
+            print('额外参数:',Ml.openAi_dict,mods,'以上是常用的模型更多模型请使用 openai --list/??')
+        elif get[1] in mods:
+            openAI.login()
+            Ml.openAi_engine=get[1]
+            return Ml.openAi_engine
+        elif '-r' in get[1]:
+            ge=tuple(filter(lambda i:i not in mods,get[1:][get.index('-r'):]))
+            dic={}
+            call=';'.join(ge)
+            exec(call,Clsr.glo,dic)
+            Ml.openAi_dict=dic
+        if Ml.openAi_engine:
+            openAI.login()
+    
+    help_dict={'-a':lambda get:tuple(filter(None,(dir_exp.fd.find_set(ds_key,i) for i in get[1:]))) if get[1:] else ds_key,
+               '-f':lambda get:tuple(filter(None,(dir_exp.fd.find(ds_key,i) for i in get[1:]))) if get[1:] else ds_key,
+               '-l':lambda get:tuple(filter(None,(dir_exp.fd.find(ds_key,i) for i in get[1:]))) if get[1:] else ds_key,
+               '-d':lambda get:'\n\n'.join((get_doc.try_code_doc(eval(f"{Ml._mro[0]}.{i}_l")) for i in get[1:])),
+               '-h':lambda get:[get_doc.try_code_doc(eval(f"{Ml._mro[0]}.{i}_l")) for i in get[1:]],
+               '-c':lambda get:[get_doc.cond_doc(eval(f"{Ml._mro[0]}.{i}_l")) for i in get[1:]],
+               '-r':lambda _:None,
+               '-t':lambda _:None}
     #帮助
     def help_l(self=None,get=[]):
         get=get[1:]
         try:
-            print(lin_dic.keys())
             if not get:
+                print(lin_dic.keys())
                 print('文本框附加快捷键:',lin_dic.keys(),
-                    '\n','输入help<空格>-a查看所有命令',
-                      '\n','输入"help<空格>命令"查看对命令的简单说明','\n',
+                    '\n','输入help -a [搜索包含的字符(可空)] 查看所有命令',
+                      '\n','输入"help 命令"查看对命令的简单说明','\n',
                       '命令框支持所有py模块并输出等同idle的内容,','\n',
-                      '输入cmd<空格>[要执行的py命令] 进行测试','\n',
+                      '输入cmd [要执行的py命令] 进行测试','\n',
                       '默认执行是全局环境下可能会出现变量名冲突','\n',
-                      '使用exec<空格>[输入环境(一般是字典变量)]<空格>[输出环境(一般是输入环境)]',
+                      '使用exec [输入环境(一般是字典变量)] [输出环境(一般是输入环境)]',
                       '改变运行环境','\n','如果动态添加命令时出现问题请在默认的全局环境下键入reformat()格式化类命令',
+                      '\n','如果在UI界面可以试着将文件直接拖入文本框或命令框快捷写入'
+                      '\n','Ctrl+l区域截图到调用路径 Alt+l区域截图到当前路径 Ctrl+k 截图并取词插入到文本框 \n Ctrl+u开关继承保存 Ctrl+p开关导入覆盖'
                       '\n','"变量就是命令,命令就是字符串"'
                       )
-            print('Ml[命令存储类]:',ds_key if get[0]=='-a'else
-                  [help(eval(f"{Ml.__mro[0]}.{i}_l")) for i in get])
+            #print(get)
+            print('Ml[命令存储类]:',Ml.help_dict[get[0]](get) if get[0] in Ml.help_dict else
+                  [help(eval(f"{Ml._mro[0]}.{i}_l")) for i in get])
         except:
             try:
-                [help(eval(Ml.__mro[1]+i)) for i in get]
+                [help(eval(Ml._mro[1]+i)) for i in get]
             except:
-                [help(eval(i,*eval(Ml.__mro[2]))) for i in get]
-    #输出help的调用顺序#"""可以通过输入 Ml._Ml__mro 起到同样效果"""
+                [help(eval(i,*eval(Ml._mro[2]))) for i in get]
+    #输出help的调用顺序#"""可以通过输入 Ml._Ml_mro 起到同样效果"""
     def mro_l(self=None,get=[]):
-        print(Ml.__mro)
+        print(Ml._mro)
     #需要提前赋值的变量加在Ml末尾(只在Ml中的规范)
-    __mro=('Ml','','Clsr.glo,Clsr.loc')
+    _mro=('Ml','','Clsr.glo,Clsr.loc')
     m=locals();Clsr.glo,Clsr.loc=globals(),globals();encoding,errors='UTF-8','ignore';add_open='.'
-    nt=4;
+    nt=4;tag='';openAi_engine="text-davinci-003";openAi_dict={}
     #m[' ']=m['_l'] encoding='gb18030'/'gbk';'UTF-8','ignore'
     
 #重置环境

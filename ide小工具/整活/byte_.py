@@ -1,3 +1,5 @@
+LEN=range(-128,128)#把取值看作区间
+#LEN=range(-12,12)
 class Be:#具有特殊功能的标识符称为关键字
     def __init__(self,*a:[int,"确保输入每一个参数都是整型"],**k):
         bt=Bt(a)
@@ -20,16 +22,17 @@ class Bt(Be):#返回一个专属无限迭代器
     def __call__(self,nem=None):
         nem=self.a if nem==None else nem
         #ne=nem-128*(abs(nem)//128)
-        ne=abs(nem)%128
-        return ne+128 if ne==nem else ne#根据byte总长的索引返回值
+        ne=abs(nem)%LEN.stop
+        return ne+LEN.stop if ne==nem else ne#根据byte总长的索引返回值
     def __get__(self,i,o):
         return i
 class Byte_(int):
     def __new__(cls,inx:int=0):
-        cls._len=range(-128,128)#把取值看作区间
+        cls._len=LEN#把取值看作区间
         return super().__new__(cls,inx)
     def __init__(self,inx=0):
         inx=Be(int(inx))
+        #print(onmn)
         self._gh=self._len[next(inx)]
         self._i=-1
         self._in=iter((1,0))

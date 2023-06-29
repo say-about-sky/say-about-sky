@@ -1,0 +1,11 @@
+#echo callt
+set x=byte 123; echo type(x)
+set x=int 123; echo type(x)
+set x=float 123; echo type(x)
+set x=str 123; echo type(x)
+set x=string 123; echo type(x)
+set x=mortise 123; echo type(x)
+set x=c int 123; echo type(x)
+set x=c int32 123; echo type(x)
+set x=c long 123; echo type(x)
+

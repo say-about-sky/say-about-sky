@@ -1,9 +1,0 @@
-#echo callt
-new func jj_l(get){
-print(get,a)
-}end
-
-new func j_l(get){
-print(get,a)
-}end
-

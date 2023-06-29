@@ -1,0 +1,4 @@
+txt="这里是 演示"
+echo txt
+say txt
+

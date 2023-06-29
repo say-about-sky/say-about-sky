@@ -1,0 +1,12 @@
+pyinstaller --noconfirm --onedir --console --icon "C:/Users/saysky/Desktop/Ms.ico" --name "tk" --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/global.log;." --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/help.help;." --add-data "D:\Python\Python310\Lib\site-packages\PIL;PIL/" --add-data "D:/Python/Python310/Lib/site-packages/pyautogui;pyautogui/" --add-data "D:/Python/Python310/Lib/site-packages/pymsgbox;pymsgbox/" --add-data "D:/Python/Python310/Lib/site-packages/pyscreeze;pyscreeze/" --add-data "D:/Python/Python310/Lib/site-packages/mouseinfo;mouseinfo/" --add-data "D:/Python/Python310/Lib/site-packages/pygetwindow;pygetwindow/" --add-data "D:/Python/Python310/Lib/site-packages/pytweening;pytweening/" --add-data "D:/Python/Python310/Lib/site-packages/pyrect;pyrect/" --add-data "D:/Python/Python310/Lib/site-packages/pyperclip;pyperclip/" --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/T/tk.txt;." --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/T/设置环境变量(如果需要也可以重新设置).bat;." --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/account.json;." --add-data "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/logo;logo/"  "C:/Users/saysky/Desktop/pyLi/基础/ide小工具/tk.py"
+
+
+pyinstaller 打包py环境
+
+nuitka 将代码编译为c 
+
+只打包为exe不架设py环境和导入模块
+nuitka --nofollow-imports --show-memory --show-progress C:\Users\saysky\Desktop\pyLi\基础\ide小工具\###
+
+#ico位置
+--windows-icon-from-ico=C:\Users\saysky\Desktop\pyLi\基础\ide小工具\logo

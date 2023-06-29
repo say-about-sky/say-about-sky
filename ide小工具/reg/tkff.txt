@@ -1,0 +1,3 @@
+
+[HKEY_CLASSES_ROOT\jpyc.file\shell\open\command]
+@="

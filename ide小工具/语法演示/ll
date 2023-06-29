@@ -1,4 +1,0 @@
-#echo callt
-new def h(){
-print('ok')
-}end

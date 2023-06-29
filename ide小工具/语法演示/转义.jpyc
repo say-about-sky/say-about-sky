@@ -1,0 +1,13 @@
+__pos__(self)	定义正号的行为：+x
+__neg__(self)	定义负号的行为：-x
+__abs__(self)	定义当被 abs() 调用时的行为
+__invert__(self)	定义按位求反的行为：~x
+
+
+def 魔法方法转义(*e):
+    t=root.diy("Text")
+    ft='{'+',# \n'.join((f"'__{i.split('(')[0].rstrip('_').strip('_')}__':lambda self,*v,**k:super().__{i.split('(')[0].rstrip('_').strip('_')}__(*v,**k)" for i in [i.split(')')[0] for i in t.split('\n')]))+'}'
+    print(ft)
+
+root.root.click_dic['魔法方法转义']=魔法方法转义
+root.root.click_lin()

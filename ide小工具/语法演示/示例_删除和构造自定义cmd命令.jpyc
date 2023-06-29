@@ -1,0 +1,8 @@
+#echo callt
+
+#构造一个cmd 命令cc cmd命令必须要有get参数作为传递
+new cmd cc(get){
+say cc
+}end
+#删除cmd 类型的cc 命令对象
+del cmd cc

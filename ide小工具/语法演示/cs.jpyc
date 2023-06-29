@@ -1,0 +1,4 @@
+set a= byte 10
+fori a print end > --a;echo ok
+
+

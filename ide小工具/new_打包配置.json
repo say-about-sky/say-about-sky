@@ -1,0 +1,181 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/tk.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": false
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "C:/Users/saysky/Desktop/Ms.ico"
+  },
+  {
+   "optionDest": "name",
+   "value": "tk"
+  },
+  {
+   "optionDest": "ascii",
+   "value": false
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "embed_manifest",
+   "value": true
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "win_private_assemblies",
+   "value": false
+  },
+  {
+   "optionDest": "win_no_prefer_redirects",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/global.log;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/help.help;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py\\Lib\\site-packages\\PIL;PIL/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pyautogui;pyautogui/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pymsgbox;pymsgbox/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pyscreeze;pyscreeze/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/mouseinfo;mouseinfo/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pygetwindow;pygetwindow/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pytweening;pytweening/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pyrect;pyrect/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "H:/py/Lib/site-packages/pyperclip;pyperclip/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/T/tk.txt;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/T/\u8bbe\u7f6e\u73af\u5883\u53d8\u91cf(\u5982\u679c\u9700\u8981\u4e5f\u53ef\u4ee5\u91cd\u65b0\u8bbe\u7f6e).bat;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/account.json;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/logo;logo/"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "requests"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "requests"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "multiprocessing"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/ming_language;ming_language/"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "maturin"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "maturin"
+  },
+  {
+   "optionDest": "collect_binaries",
+   "value": "maturin"
+  },
+  {
+   "optionDest": "collect_all",
+   "value": "maturin"
+  },
+  {
+   "optionDest": "collect_data",
+   "value": "maturin"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/saysky/Desktop/pyLi/\u57fa\u7840/ide\u5c0f\u5de5\u5177/reg;reg/"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

@@ -1,0 +1,39 @@
+#尝试ChatBot
+#from ChatGPT_PyBot import ChatBot
+#from Dtb import *
+#目前已禁用
+
+"""
+config = {  
+    "session_token":"Your token"  
+    				or  
+    "email": "<YOUR_EMAIL>",  
+    "password": "<YOUR_PASSWORD>"  
+}
+"""
+cook={
+    "session_token":"eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..3uhf3txB_cq7o3ao.4k2KStPcr800_vKtJRfrcUAGnkqSWwqAmtvJBGfh15LWfpTMmjWe1Fsmt5JL4vu2kGG6WIsylIcUXw7Mtg9O82VDFR_AcM9CgjT9pyaz4qF6lz3IvmSMGmUG-o23PjoQat5kerU-B-ZnzWutojWgTkWKdYRv1H3ljb8uCqS4cOxirBo9XiSd4JI7CV67U9cEv9TW86tI_UrJPFMsdKVRNm3sk4u_FsXDRVbKudYThRNhEUTdKlrVthlWQWHriezxwpll4LyU_lyE6zGUO7xexSr7bBufU1aakbSFNxGHGxtDqjl90-66E8lsUCI7DsydqcPYoZj1VN_2B1VZO2ab6ed-HksIA7CotozvCtlDITKDJkVjfRbCiPj0rU3O6RrRmtUYR4EGbKUowwu5EPpGOQxLR3OaGIxqicxgtdqzOZFiID3YdGcw4rGP0wYEO7wN_a-pKz-kHacVOgu6xqGspmrrWasdbRDZL_jeREGE1gb8ZWWBLttoPDBF1lFfe1_NRe8u_HuNkLc0k-gFy2EO1Q9qWIznpa39DhQuDhQH80-1UKziChgM0_88ZgnoarKGOAY7A7rusZGGrgYJexKfrwzBRsQ38NLqosH0knLLqbmPgV8OmODsFG-YbSzaxGl_fEMWe8GTEffSY6LxrtskzzPqjjYigxoH-E7wehYzkCjwKzy_G575lvDBgmXoC7j427ehg67EpenvPIS7rEIXHDR3rG3jUo19WkgAJdPikSXsURzeO3XshbGoAJke528J9vemvbmZqJdf54KHWXnJxrCL9d8WfeCzv210kbOSef7KAi0L705b76N7cJpE3wGxOEraa2Kko1Sxs2Gw7Cxab24jSfwnf6d_vyT7jy5whyNhujrljOhgVsNOiNPpncx2UC-XNUfrhUWIUuFVjqbeSktoow03z9SzJ7tX0wINUrZ0cJf9Q13rnU__ZXSJopzG76hjWRvbTIp5o3Fl7TB_F29Lwul-ipWdwSnfwMe1MJZRIwRFTH9M1xjTRAd1ReshE02peRy6Uyq3lL_sdJqxE1cqzGWrX3BUUI373-x5NceOAHr1-a-HE5HBe-8VzRfiXlpuouKTJCF33iHNtA9WhbvjPgeQTfKWPd35O_tKSYuO3xRCGD1_lTSFyYyc4_5AHXe_5UODPKH3SWjg_pl6K9MU2rffupG-isfMc29kesBwDQam_Xh8bhS5hTqJQ8aA767QHfiOFZbkf9frf-nC2eozvR69Fffc_-chA71gt7H0gwtpIEblJQfGgQBy4nD46v3muNZfa1sd4zqZGWxGBDRSsYebPWDDUANuYntwkf-cyCPIlVWsVVfJsbbeaAq2Juy7pDF1rrNzDg0tkZdAb4IQZep61R4TavMH-sYsh-amuKyjCPCUxmdNZxvfkpluXyHcP2zxEv0owVkBTzfBE_jg7C8N1sMsUjpFfznUCSABcCSuaonbrMwm3UNQAw7YIv8dALyBp4ip1OzmULSxux1eVWGs0MOXhYwcRjFuy_2kJLuN8qLsumS_a5gpvfO95jXxsKEJ0CwEHigoHyI9t5KEk3WV5UVp6YauRv_jfc389EOnlXUUT96h2_HCP_zz17vBGf4yl2c1e35_qX1yxQgIKUyQqgvUBKtMrYZdBudBjF3jJVTuxlCTOFV2Jb01C8c5cSMMQEgulKfdXNTDgdjSlL2DKCxfG_Heub-ynUOHVr7pubtnbC9Dt1mzSjO-t_ujwXEJZlSAkP1JtuMcLN06zezsOnVdK1uakgFjTdqvC0WmlBl8l6hUy_VUrJa5y7tEaukwW0TVZ2PUyEa9eu5MNtpy7cflT4Q_xH1Sj1TWVDYoQj2jUcaV6FBatmhFH53g1jwS30yvIMi4SOadMrGhHoPagLyJFX1YL4gWYn0IOkBuiy3RXzpWiJhYMnQT1uyw2WsitBc4q7l-ILCfVvODAykCa90BJcNuJFN_l76PuTojWCJ9kTEoy-OBGKvPzPpT40S2BuM0TQUU1mks4XaBTE2E2wAhshnMoKBB33ILeX1humY_3LDnJaQjSqAcPOGSMvBfw6NdTUE_ouHbdjZHf2mTDIr7ZzwMnZK56to2zUGKGTE5NyCn5cJHXIjMHB4OppPRgEZKN35L0WpVxTgGRLaj3RAJmAmvrlXg2lpyeeuegmRuvH3hSmb2mZCX4iT7TQA5zoryGTY6w_Sr5xDFva3x8swr5DUNf_RDGd3B3_a3Rhx8XI6apJo-TT7D220zCmpHDlLr1nKIIhEWoT-JNQlEBjj5rNgUUEtjungFkMS4TvNfIZUHG7q3NX0CEaKgzkSKefeAcwYomB258AVJqj8Kc2U7ng.M7yeZgj9viV1kE6WUICqdw"
+    }
+
+#loop = asyncio.get_event_loop()
+#loop.run_until_complete(mop())
+#loop.close()
+
+#运行并返回ChatBot会话
+def run(txt:str,config:dict=cook):
+    chatbot = ChatBot(config, conversation_id=None)
+    return chatbot.get_chat_response(txt)["message"]
+#副本
+def runn(q,txt,config):
+    chatbot = ChatBot(config, conversation_id=None)
+    q.put(chatbot.get_chat_response(txt)["message"])
+    print('ok')
+#运行副本并返回get
+def main(txt:str,config:dict=cook):
+    fun=Qu(runn)
+    return fun(txt,config)
+
+if __name__=='__main__':
+    import sys,multiprocessing
+    multiprocessing.freeze_support()
+    print(main(' '.join(sys.argv[1:])))

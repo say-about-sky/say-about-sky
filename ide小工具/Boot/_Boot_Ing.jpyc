@@ -1,0 +1,30 @@
+new def SAYKEY(get){
+get=get[1:]
+if get[0] in ['help','-help','--help']:
+    return print(engapi.yd_lang)
+if get:
+    if get[0]=='eng':
+        try:
+            return [engapi.txengmp(str(diy(i))) for i in get[1:]]
+        except:
+            return engapi.txengmp(' '.join(get[1:]))
+        #elif get[0]=='ce':
+        #Ml.__say_api_ce(get)
+    elif get[0] in engapi.yd_lang:
+        Ml.__say_api_ce(get,lang=get[0])
+    else:
+        Ml.__say_api_ce([':']+get)
+}end
+
+new func __say_api_ce(get,**k){
+try:
+    return [engapi.txchemp(str(diy(i)),**k) for i in get[1:]]
+except:
+    return engapi.txchemp(' '.join(get[1:]),**k)
+}end
+
+new cmd say(_){
+use engapi Ml
+#echo get
+SAYKEY(get)
+}end

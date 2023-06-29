@@ -1,0 +1,7 @@
+rp=r"C:\Users\Administrator\Desktop\pyLi\基础\ide小工具\语法演示\test\echo.jpyc"
+
+run C:\Users\Administrator\Desktop\pyLi\基础\ide小工具\语法演示\test\echo.jpyc
+
+run rp
+
+run rp rp

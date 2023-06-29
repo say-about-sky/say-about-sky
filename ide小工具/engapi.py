@@ -1,4 +1,5 @@
 import requests
+#原生字符串模板操作,可重复使用,切片替换更加智能
 from string import Template
 from playsound import playsound as pd
 lod=''
@@ -41,8 +42,10 @@ yd_lang=tuple("""
     id
     vi
     """.split('\n    ')[1:-1])
-
-
+api_tuple=("""https://fanyi.sogou.com/reventondc/synthesis?text="$lit"&speed=1&lang=${log}&from=translateweb&speaker=${speaker}""",#zh-CHS
+           'http://dict.youdao.com/dictvoice?type=1&audio=${lit}',
+           )
+default_api=api_tuple[1]
 def oppen(voice,ld='mp3'):
     try:
         with open(r'.\txten.'+ld,'wb') as f:
@@ -50,23 +53,24 @@ def oppen(voice,ld='mp3'):
             f.close()
     except:
         print('保存失败')
-        
 def txengmp(lit:'英语单词'='English words'):
     global lod,voice
     if lod == lit:
         return mp()
-    api=Template(f'http://dict.youdao.com/dictvoice?type=1&audio={lit}')
+    api=Template(f'http://dict.youdao.com/dictvoice?type=1&audio=${lit}')
     voice = requests.get(api.substitute(lit=lit)).content
     #print(api.substitute(lit=lit))
     lod=lit
     oppen(voice)
     return mp()
-def txchemp(lit:'中英混'='你好输入English words',log='zh'):
+def txchemp(lit:'中英混'='你好输入English words',**k:{'log':'语言','speaker':'声音(int)'}):#k={'log':'zh-CHS','speaker':6}
     global lod,voice
     if lod == lit:
         return mp()
-    api=Template(f"http://tts.youdao.com/fanyivoice?word={lit}&le={log}&keyfrom=speaker-target")
-    voice = requests.get(api.substitute(lit=lit)).content
+    k={'log':'zh-CHS','speaker':6} if not k else k
+    api=Template(default_api)
+    #
+    voice = requests.get(api.substitute(lit=lit,**k)).content
     #print(api.substitute(lit=lit))
     lod=lit
     oppen(voice)

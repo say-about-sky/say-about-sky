@@ -1,0 +1,49 @@
+##echo callt;
+
+#打印并说出文本
+new cmd echo_and_say(name,txt){
+echo txt
+say txt
+}end
+#这是一个面向字节的文本查看器
+new cmd 演示1(name,the_time){
+import time
+echo_and_say 这是一个面向字节码的文本查看器
+time.sleep(float(the_time))
+echo_and_say 现在的演示是由内置脚本\剧本制作 
+time.sleep(float(the_time))
+echo_and_say 脚本\剧本可以动态添加很多功能
+time.sleep(float(the_time))
+echo_and_say 但是也不能滥用脚本
+time.sleep(float(the_time)) 
+echo_and_say 脚本的核心是语法树,最终还是会解释为python语言
+}end
+
+#清空cmd
+cls
+
+echo 演示1:
+
+演示1 0.8
+
+echo_and_say 接下来演示常用操作 
+echo_and_say 常用操作将会插入到文本框
+time.sleep(float(the_time))
+
+#清空文本框
+set enr='\n'
+cls r
+input -r 除了常见的拖入 拖出 导入 导出 粘贴 剪切 复制 保存等快捷键;\n
+input 还内置的如F5这样的快捷键
+time.sleep(float(the_time))
+input -r \n 最后我们来演示一下运行py(他当然可以运行java等其他语言,但方便演示使用自带语言)
+echo_and_say 以上是所有扩展;稍等,请安照文本框中的提示操作以完成演示1
+time.sleep(4)
+cls r
+
+cmd ysn="print('end');root.root.diy('open '+os.path.dirname(root.root.__file__)+'\\语法演示\\演示3.jpyc');root.root.diy('say 接下来介绍F6');root.root.diy('cls r ')"
+
+use os
+input -r #请按下F5 \n
+root.root.text.insert(root.root.tkinter.INSERT,ysn)
+

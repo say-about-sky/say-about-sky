@@ -1,0 +1,20 @@
+#请按下F6或右键选择run_cmd调用该程序
+echo_and_say 这是一个生成更多演示文件的脚本
+echo_and_say 接下来开始调用
+#调用上级对象
+use os dir_exp Dio
+#创建一个路径对象 路径为tk所在目录
+path_tk=dir_exp.Mou(os.path.dirname(root.root.__file__))
+#声明一个byte类型值为3 指针为itt
+set itt=byte 3
+#一个简易循环 循环3次 每次创建一个演示文件
+fori 3 path_tk['语法演示']['']=('演示'+str(++itt)+'.jpyc')
+#重复刚才的过程
+kksk=path_tk['语法演示']['kksk']
+set read_list= filer -r kksk[:]
+reads=Dio(read_list[0])
+set itt=byte 3
+fori len(reads.l) filew next(reads) path_tk['语法演示']['演示'+str(++itt)+'.jpyc']
+
+#open path_tk['语法演示']['演示4.jpyc']
+run path_tk['语法演示']['kksk']['sl5.txt']

@@ -1,0 +1,3 @@
+set txt=%*
+rem 调用py文件
+%pa% %txt%

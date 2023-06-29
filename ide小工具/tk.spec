@@ -8,7 +8,7 @@ a = Analysis(
     ['C:/Users/saysky/Desktop/pyLi/基础/ide小工具/tk.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/global.log', '.'), ('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/help.help', '.'), ('D:\\Python\\Python310\\Lib\\site-packages\\PIL', 'PIL/'), ('D:/Python/Python310/Lib/site-packages/pyautogui', 'pyautogui/'), ('D:/Python/Python310/Lib/site-packages/pymsgbox', 'pymsgbox/'), ('D:/Python/Python310/Lib/site-packages/pyscreeze', 'pyscreeze/'), ('D:/Python/Python310/Lib/site-packages/mouseinfo', 'mouseinfo/'), ('D:/Python/Python310/Lib/site-packages/pygetwindow', 'pygetwindow/'), ('D:/Python/Python310/Lib/site-packages/pytweening', 'pytweening/'), ('D:/Python/Python310/Lib/site-packages/pyrect', 'pyrect/'), ('D:/Python/Python310/Lib/site-packages/pyperclip', 'pyperclip/'), ('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/T/tk.txt', '.'), ('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/T/设置环境变量(如果需要也可以重新设置).bat', '.'), ('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/account.json', '.'), ('C:/Users/saysky/Desktop/pyLi/基础/ide小工具/logo', 'logo/')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
